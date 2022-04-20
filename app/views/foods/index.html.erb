@@ -16,29 +16,22 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Food</th>
+          <th scope="col">Measurement Unit</th>
+          <th scope="col">Unit price</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
+        <% @foods.each_with_index do |n, idx| %>
         <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <th scope="row"><%=idx + 1%></th>
+          <td><%= n.name%></td>
+          <td><%= n.measurement_unit%></td>
+          <td>₦<%=n.price%></td>
+          <td><a>Delete</a></td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        <% end %>
       </tbody>
     </table>
   </body>
