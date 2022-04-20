@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RecipeApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    
+    <%= yield %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Food</th>
+          <th scope="col">Measurement Unit</th>
+          <th scope="col">Unit price</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each_with_index do |n, idx| %>
+        <tr>
+          <th scope="row"><%=idx + 1%></th>
+          <td><%= n.name%></td>
+          <td><%= n.measurement_unit%></td>
+          <td>₦<%=n.price%></td>
+          <td><a>Delete</a></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>
