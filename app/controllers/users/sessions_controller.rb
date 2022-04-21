@@ -17,7 +17,7 @@ class Users::SessionsController < Devise::SessionsController
 
     else
       flash[:notice] = 'User does not exist.'
-      redirect_to 'http://127.0.0.1:3000/users/sign_in', allow_other_host: true
+      redirect_to 'http://localhost:3000/users/sign_in', allow_other_host: true
     end
   end
 
@@ -27,7 +27,7 @@ class Users::SessionsController < Devise::SessionsController
     set_flash_message! :notice, :signed_out if signed_out
     yield if block_given?
     # respond_to_on_destroy
-    redirect_to 'http://127.0.0.1:3000/users/sign_in'
+    redirect_to 'http://localhost:3000//users/sign_in'
   end
 
   # protected
