@@ -33,7 +33,7 @@ class FoodsController < ApplicationController
     puts "This is an attempt to make you stand out #{params}"
     food_destroy = Food.find(params[:id])
     food_destroy.destroy
-    flash[:notice] = "Food succesfully deleted"
+    flash[:notice] = 'Food succesfully deleted'
     redirect_to foods_url
   end
 end
