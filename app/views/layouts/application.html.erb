@@ -24,13 +24,13 @@
               <a class="nav-link" href="/foods">Foods</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Recipes</a>
-            </li>
+            <%= link_to "Recipes", recipes_path, class: "nav-link" %>
+              </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Public Recipes</a>
+            <%= link_to "public_recipe", public_recipes_path, class: "nav-link" %>
             </li>    
             <li class="nav-item">
-              <a class="nav-link" href="#">Shopping List</a>
+             <%= link_to "shopping_lists", general_shopping_lists_path, class: "nav-link" %>
             </li>    
           </ul>
         </div>
