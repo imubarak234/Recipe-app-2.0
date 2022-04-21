@@ -12,7 +12,8 @@
   <body>
     
     <%= yield %>
-    <table class="table table-striped">
+    <a class="btn btn-secondary m-3" href="foods/new">Add Food</a>
+    <table class="table table-striped w-75 m-3">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -29,7 +30,13 @@
           <td><%= n.name%></td>
           <td><%= n.measurement_unit%></td>
           <td>₦<%=n.price%></td>
-          <td><a>Delete</a></td>
+          <td>
+            <form action="/foods/<%=n.id%>" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete" class="btn btn-secondary">
+            </form>
+          </td>
         </tr>
         <% end %>
       </tbody>
