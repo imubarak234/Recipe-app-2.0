@@ -10,18 +10,19 @@
   </head>
 
 <body class = "container-fluid">
-    <div class = "d-flex justify-content-around">
       <% @recipe.each do |recipe| %>
-      <div class = "d-flex flex-column">
-        <p> <%= recipe.name %></p>
-     <%= link_to "Destroy", recipe_path(@recipe), data: {
-                    turbo_method: :Destroy,
-                    turbo_confirm: "Are you sure?"
-                  } %>  
+    <div class = "d-flex justify-content-around mb-2">
+      <div class = "justify-content-around d-flex flex-column">
+        <h2 class= "align-self-start"> <%= recipe.name %></h2>
+            <form action="/foods/<%=recipe.id%>" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete" class="btn btn-secondary">
+            </form> 
 
                   </div>
-        <p> <%= recipe.description %></p>
-        <% end %>
+        <p class= "align-self-start lead p-4"> <%= recipe.description %></p>
         </div>
+        <% end %>
 </body>
 </html>
