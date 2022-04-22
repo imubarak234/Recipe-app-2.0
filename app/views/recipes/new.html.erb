@@ -1,0 +1,31 @@
+<h3 class="h3 m-3">Create a Recipe Form</h3>
+
+<%= form_with model: @recipe_new, url: recipes_path, method: :post, class: "w-50 m-3", local: true, scope: :recipes do |f|  %>
+
+  <div class = "form-group">
+    <%= f.label :name, for: "names" %><br>
+    <%= f.text_field :name, class: "form-control", id: "names"%>
+  </div>
+
+  <div class = "from-group">
+    <%= f.label :preparation_time, for: "preparation"  %><br>
+    <%= f.text_field :preparation_time,  class: "form-control", id: "preparation" %>
+  </div>
+
+  <div class = "from-group">
+    <%= f.label :cooking_time, for: "cooking"  %><br>
+    <%= f.text_field :cooking_time,  class: "form-control", id: "cooking" %>
+  </div>
+
+  <div class = "from-group">
+    <%= f.label :description, for: "desc"  %><br>
+    <%= f.text_area :description,  class: "form-control", id: "desc" %>
+  </div>
+
+  <div class = "form-check form-switch mb-3 pl-5 d-flex">
+    <%= f.label :public, for: "flexSwitchCheckDefault", class: "form-check-label m-3" %><br>
+    <%= f.check_box :public, class: "form-check-input m-3", id: "flexSwitchCheckDefault" %>
+  </div>
+
+  <%= f.submit "Create Recipe", class: "btn btn-secondary"%>
+<% end %>

@@ -29,7 +29,6 @@ class FoodsController < ApplicationController
   end
 
   def destroy
-    puts "This is an attempt to make you stand out #{params}"
     food_destroy = Food.find(params[:id])
     food_destroy.destroy
     flash[:notice] = "Food succesfully deleted"
