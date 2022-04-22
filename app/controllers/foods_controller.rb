@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  # before_action :authenticate_user!
   def index
     @foods = Food.all
   end
@@ -31,7 +32,7 @@ class FoodsController < ApplicationController
   def destroy
     food_destroy = Food.find(params[:id])
     food_destroy.destroy
-    flash[:notice] = "Food succesfully deleted"
+    flash[:notice] = 'Food succesfully deleted'
     redirect_to foods_url
   end
 end
