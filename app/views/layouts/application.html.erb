@@ -14,30 +14,47 @@
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="/">Recipe App</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-             <%= link_to "Foods", foods_path, class: "nav-link" %>
+              <a class="nav-link" href="/foods">Foods</a>
             </li>
             <li class="nav-item">
-            <%= link_to "Recipes", recipes_path, class: "nav-link" %>
-              </li>
+              <a class="nav-link" href="/recipes">Recipes</a>
+            </li>
             <li class="nav-item">
-            <%= link_to "public_recipe", public_recipes_path, class: "nav-link" %>
-            </li>    
-            <li class="nav-item">
-             <%= link_to "shopping_lists", general_shopping_lists_path, class: "nav-link" %>
-            </li>    
+              <a class="nav-link" href="/public_recipes">Public Recipes</a>
+            </li>     
           </ul>
         </div>
       </div>
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="d-flex m-4">
+      <div>
+        <% if user_signed_in? %>
+        <%= button_to(
+          "Log Out",
+          destroy_user_session_path,
+          class: "btn btn-secondary",
+          method: :delete
+        ) %>
+
+        <% else %>
+          <a href='/users/sign_in' class = "btn btn-secondary">Sign in</a>
+        <% end %>
+      </div>
+      <% if current_user %>
+        <h4 class="h4">User: <%=current_user.id%>  Signed In</h4>
+      <% end %>
+    </div>
+    <div>
+        <p class="notice h4"><%= notice %></p>
+        <p class="alert h4"><%= alert %></p>
+      </div>
     <%= yield %>
   </body>
 </html>

@@ -1,2 +1,35 @@
-<h1>PublicRecipes#index</h1>
-<p>Find me in app/views/public_recipes/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RecipeApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    
+    <%= yield %>
+    <div class="d-flex justify-content-around">
+      <h2 class="h1 m-3">Public Recipes</h2>
+    </div>
+
+    <div class="d-flex flex-column align-items-center">
+      <% @public.each do |n| %>
+        <div class="d-flex border border-secondary m-5 p-3 w-75" onclick="location.href='recipes/<%=n.id%>'">
+          <div class="w-25">
+            <p class="h3 m-3"><%=n.name%></p>
+            <p class="h5 m-3">By: <%=n.user.name%></p>
+          </div>
+          <div class="w-75">
+            <p class="h5 m-3">Total food items: <%=RecipeFood.where(recipe_id: n.id).count%></p>
+            <p class="h5 m-3">Total price: ₦<%=RecipeFood.pricer(n)%></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+  </body>
+</html>

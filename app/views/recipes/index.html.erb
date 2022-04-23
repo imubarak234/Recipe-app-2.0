@@ -8,20 +8,31 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <body>
+    
+    <%= yield %>
+    <div class="d-flex justify-content-around">
+      <h2 class="h1 m-3">Recipes</h2>
+      <a class="btn btn-secondary m-3" href="recipes/new">Add Recipe</a>
+    </div>
 
-<body class = "container-fluid">
-    <div class = "d-flex justify-content-around">
-      <% @recipe.each do |recipe| %>
-      <div class = "d-flex flex-column">
-        <p> <%= recipe.name %></p>
-     <%= link_to "Destroy", recipe_path(@recipe), data: {
-                    turbo_method: :Destroy,
-                    turbo_confirm: "Are you sure?"
-                  } %>  
-
-                  </div>
-        <p> <%= recipe.description %></p>
-        <% end %>
+    <div class="d-flex flex-column align-items-center">
+      <% @recipes.each do |n| %>
+        <div class="d-flex border border-secondary m-5 p-3 w-75" onclick="location.href='recipes/<%=n.id%>'">
+          <div class="w-25">
+            <p class="h5 m-3"><%=n.name%></p>
+            <form action="/recipes/<%=n.id%>" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-secondary m-3">
+              </form>
+          </div>
+          <div class="w-75">
+            <p class="h5 m-3"><%=n.description%></p>
+          </div>
         </div>
-</body>
+      <% end %>
+    </div>
+    
+  </body>
 </html>
