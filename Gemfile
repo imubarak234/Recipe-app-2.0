@@ -13,6 +13,8 @@ gem 'sprockets-rails'
 
 gem 'devise'
 
+gem 'capybara'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
