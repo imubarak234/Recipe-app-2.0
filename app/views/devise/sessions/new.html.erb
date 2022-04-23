@@ -1,39 +1,42 @@
-<h2>Log in</h2>
+<h2 class="h2 m-4">Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, class: "form-label", for: "validationCustomUsername" %><br />
-    <div class="input-group has-validation">
-      <span class="input-group-text" id="inputGroupPrepend">@</span>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",id: "validationCustomUsername", class: "form-control", 
-      required: true, placeholder: "Email"
-      %>
-      <div class="invalid-feedback">
-          Please Enter an Email Address.
-      </div>
-    </div> 
-  </div>
-
-  <div class="field">
-    <%= f.label :password, class: "form-label", for: "validationCustom03" %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "validationCustom03",
-    required: true, placeholder: "Password" %>
-    <div class="invalid-feedback">
-      Please provide Password.
-    </div>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
+<div class="w-25 m-4">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :email, class: "form-label", for: "validationCustomUsername" %><br />
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">@</span>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",id: "validationCustomUsername", class: "form-control", 
+        required: true, placeholder: "Email"
+        %>
+        <div class="invalid-feedback">
+            Please Enter an Email Address.
+        </div>
+      </div> 
+    </div>
+
+    <div class="field">
+      <%= f.label :password, class: "form-label", for: "validationCustom03" %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "validationCustom03",
+      required: true, placeholder: "Password" %>
+      <div class="invalid-feedback">
+        Please provide Password.
+      </div>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
     </div>
   <% end %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
