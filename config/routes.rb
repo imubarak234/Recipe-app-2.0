@@ -17,5 +17,8 @@ Rails.application.routes.draw do
   get '/general_shopping_lists', to: 'general_shopping_lists#index'
 
   resources :foods
-  resources :recipes
+  resources :recipes do
+    resources :recipe_foods
+  end
+  
 end

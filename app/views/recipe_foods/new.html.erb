@@ -1,0 +1,40 @@
+<h3 class="h3 m-3">Create a Food Form</h3>
+<div class="d-flex"> 
+  <%= form_with model: @recipe_food, url: recipe_recipe_foods_path, method: :post, class: "w-50 m-3", local: true, scope: :recipe_foods do |f|  %>
+
+    <div class = "from-group">
+      <%= f.label :quantity, for: "quat"  %><br>
+      <%= f.text_field :quantity,  class: "form-control", id: "quat" %>
+    </div>
+
+    <div class = "form-group mb-3">
+      <%= f.label "Food ID", for: "foodsid" %><br>
+      <%= f.text_field :food_id, class: "form-control", id: "foodsid" %>
+    </div>
+
+    <%= f.submit "Add Ingredient", class: "btn btn-secondary"%>
+  <% end %>
+  <div>
+    <table class="table table-striped w-50 h-50">
+      <thead>
+        <tr>
+          <th scope="col">Food ID</th>
+          <th scope="col">Food</th>
+          <th scope="col">Measurement Unit</th>
+          <th scope="col">Unit price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Food.all.each do |n| %>
+        <tr>
+          <th scope="row">ID: <%=n.id%></th>
+          <td><%= n.name%></td>
+          <td><%= n.measurement_unit%></td>
+          <td>₦<%=n.price%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

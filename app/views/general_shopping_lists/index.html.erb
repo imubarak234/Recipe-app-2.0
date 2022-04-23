@@ -12,6 +12,30 @@
   <body>
     
     <%= yield %>
-    <h2>General shopping lists</h2>
+    <div class="d-flex justify-content-around">
+      <h2 class="h1 m-3">Public Recipes</h2>
+    </div>
+    <div class="d-flex">
+    <p class="h3 ">Amount of food items to buy: <%=@count%></p>
+    <p class="h3 mx-4">Total value of food needed: <%=total_price%></p>
+    </div>
+    <table class="table table-striped w-75 m-3">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foody.each do |n| %>
+        <tr>
+          <th scope="row"><%=n.food.name%></th>
+          <td><%= RecipeFood.where(food_id: n.food_id).pluck(:quantity).sum%></td>
+          <td>₦<%=RecipeFood.where(food_id: n.food_id).count * n.food.price%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </body>
 </html>
