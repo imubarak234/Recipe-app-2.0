@@ -50,7 +50,7 @@
         </tr>
       </thead>
       <tbody>
-        <% RecipeFood.all.includes(:foods).each do |n| %>
+        <% RecipeFood.all.includes(:food).each do |n| %>
         <tr>
           <th scope="row"><%= n.food.name%></th>
           <td><%= n.quantity%></td>

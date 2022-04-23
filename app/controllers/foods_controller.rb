@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FoodsController < ApplicationController
   def index
     @foods = Food.all
@@ -31,7 +33,7 @@ class FoodsController < ApplicationController
   def destroy
     food_destroy = Food.find(params[:id])
     food_destroy.destroy
-    flash[:notice] = "Food succesfully deleted"
+    flash[:notice] = 'Food succesfully deleted'
     redirect_to foods_url
   end
 end
