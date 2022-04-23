@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class GeneralShoppingListsController < ApplicationController
   def index
     # @foody = Food.where.not(id: Food.joins(:recipe_food).pluck(:id))

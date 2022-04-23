@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RecipeFoodsController < ApplicationController
   def new
     puts "All this just to make you stand out in the rain#{params}"

@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-# frozen_string_literal: true
-
 module Users
   class UnlocksController < Devise::UnlocksController
     # GET /resource/unlock/new
     # def new
     #   super
     # end
-=======
-class Users::UnlocksController < Devise::UnlocksController
-  # GET /resource/unlock/new
-  # def new
-  #   super
-  # end
->>>>>>> d79b51999ada2557b6d175489e9f3f660944ecd0
 
     # POST /resource/unlock
     # def create
