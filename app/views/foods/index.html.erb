@@ -31,11 +31,13 @@
           <td><%= n.measurement_unit%></td>
           <td>₦<%=n.price%></td>
           <td>
-            <form action="/foods/<%=n.id%>" method="post">
-              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-              <input type="hidden" name="_method" value="DELETE">
-              <input type="submit" value="Delete" class="btn btn-secondary">
-            </form>
+            <%if n.user_id == current_user.id%>
+              <form action="/foods/<%=n.id%>" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-secondary">
+              </form>
+            <%end%>
           </td>
         </tr>
         <% end %>
