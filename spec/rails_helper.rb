@@ -3,9 +3,9 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
-require "capybara/rspec"
+require 'capybara/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -64,27 +64,26 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   Capybara.register_driver :selenium_chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
 
   config.before(:suite) do
-  DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
-  DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :transaction
   end
 
   config.before(:each, js: true) do
-  DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :truncation
   end
 
   config.before(:each) do
-  DatabaseCleaner.start
+    DatabaseCleaner.start
   end
 
   config.after(:each) do
-  DatabaseCleaner.clean
+    DatabaseCleaner.clean
   end
-
 end
